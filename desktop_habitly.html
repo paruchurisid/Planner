@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sid Paruchuri - Task & Habit Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="tasks.js" defer></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar { width: 280px; transition: all 0.3s; }
+        .main-content { margin-left: 280px; transition: all 0.3s; }
+        .habit-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen flex bg-gray-50">
+    <!-- Sidebar -->
+    <div class="sidebar fixed h-full bg-white shadow-lg flex flex-col">
+        <div class="p-6 border-b border-gray-100">
+            <h1 class="text-2xl font-bold text-blue-600">Sid Paruchuri</h1>
+        </div>
+        <nav class="flex-1 p-4">
+            <ul class="space-y-2">
+                <li><a href="#" class="flex items-center p-3 rounded-lg bg-blue-50 text-blue-600 font-medium">
+                    <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Dashboard</a></li>
+                <li><a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50">
+                    <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>Analytics</a></li>
+                <li><a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50">
+                    <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>History</a></li>
+                <li class="mt-8 pt-4 border-t border-gray-100">
+                    <h3 class="text-xs font-semibold text-gray-400 uppercase px-3 mb-2">Workspace</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="flex items-center p-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                            <span class="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                            Personal
+                        </a></li>
+                        <li><a href="#" class="flex items-center p-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                            <span class="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
+                            Work
+                        </a></li>
+                        <li><a href="#" class="flex items-center p-2 rounded-lg text-blue-600 font-medium">
+                            <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            New Workspace
+                        </a></li>
+                    </ul>
+                </li>
+                <li class="mt-8 pt-4 border-t border-gray-100">
+                    <h3 class="text-xs font-semibold text-gray-400 uppercase px-3 mb-2">My Habits</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="flex items-center p-2 rounded-lg text-gray-600 hover:bg-gray-50">Health & Fitness</a></li>
+                        <li><a href="#" class="flex items-center p-2 rounded-lg text-gray-600 hover:bg-gray-50">Learning</a></li>
+                        <li><a href="#" class="flex items-center p-2 rounded-lg text-blue-600 font-medium">+ New Category</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center p-3 rounded-lg bg-gray-50">
+                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium mr-3">SP</div>
+                <div class="flex-1">
+                    <p class="text-sm font-medium">Sid Paruchuri</p>
+                    <p class="text-xs text-gray-500">View Profile</p>
+                </div>
+                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Add New Task</h3>
+                    <button onclick="document.getElementById('taskModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <form id="taskForm" class="space-y-4">
+                    <div>
+                        <label for="taskTitle" class="block text-sm font-medium text-gray-700">Task Title</label>
+                        <input type="text" id="taskTitle" name="title" required 
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="taskDescription" class="block text-sm font-medium text-gray-700">Description (Optional)</label>
+                        <textarea id="taskDescription" name="description" rows="3"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="taskDueDate" class="block text-sm font-medium text-gray-700">Due Date</label>
+                            <input type="date" id="taskDueDate" name="dueDate"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="taskPriority" class="block text-sm font-medium text-gray-700">Priority</label>
+                            <select id="taskPriority" name="priority"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" onclick="document.getElementById('taskModal').classList.add('hidden')"
+                            class="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Add Task
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content flex-1">
+        <header class="bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900" id="pageTitle">Dashboard</h1>
+                    <p class="text-sm text-gray-500" id="pageSubtitle">Track your daily habits and tasks</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search habits..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"/></svg>
+                        </div>
+                    </div>
+                    <button class="p-2 text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Notifications</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="border-b border-gray-200">
+            <nav class="-mb-px flex space-x-8 px-6" aria-label="Tabs">
+                <a href="#dashboard" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    Dashboard
+                </a>
+                <a href="#tasks" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    Tasks
+                </a>
+                <a href="#habits" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    Habits
+                </a>
+                <a href="#analytics" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    Analytics
+                </a>
+            </nav>
+        </div>
+        <main class="max-w-7xl mx-auto px-6 py-6">
+            <!-- Tasks View -->
+            <div id="tasksView" class="hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-lg font-medium text-gray-900">My Tasks</h2>
+                    <div class="flex space-x-2">
+                        <div class="relative">
+                            <button id="filterButton" class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <svg class="-ml-0.5 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                                </svg>
+                                Filter
+                            </button>
+                        </div>
+                        <button onclick="document.getElementById('taskModal').classList.remove('hidden')" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                            New Task
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Task Filters -->
+                <div class="flex space-x-2 mb-6 overflow-x-auto pb-2">
+                    <button data-filter="all" class="px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-600">
+                        All Tasks
+                    </button>
+                    <button data-filter="today" class="px-3 py-1 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100">
+                        Today
+                    </button>
+                    <button data-filter="upcoming" class="px-3 py-1 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100">
+                        Upcoming
+                    </button>
+                    <button data-filter="completed" class="px-3 py-1 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100">
+                        Completed
+                    </button>
+                </div>
+
+                <!-- Tasks List -->
+                <div id="tasksContainer" class="space-y-3">
+                    <!-- Tasks will be dynamically inserted here by tasks.js -->
+                </div>
+            </div>
+
+            <!-- Dashboard View -->
+            <div id="dashboardView">
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">Current Streak</p>
+                            <p class="text-3xl font-semibold">12 days</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-green-100 text-green-600">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">Habits Completed</p>
+                            <p class="text-3xl font-semibold">8/12</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-blue-100 text-blue-600">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">Weekly Goal</p>
+                            <p class="text-3xl font-semibold">85%</p>
+                        </div>
+                        <div class="relative w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 36 36">
+                                <path d="M18 2.0845a15.9155 15.9155 0 010 31.831 15.9155 15.9155 0 010-31.831" fill="none" stroke="#E5E7EB" stroke-width="3"/>
+                                <path class="progress-ring__circle" d="M18 2.0845a15.9155 15.9155 0 010 31.831 15.9155 15.9155 0 010-31.831" fill="none" stroke="#3B82F6" stroke-width="3" stroke-dasharray="85, 100"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Habits -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold">Today's Habits</h2>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">May 27, 2023</span>
+                            <button class="p-1 text-gray-400 hover:text-gray-500">
+                                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="divide-y divide-gray-100">
+                    <!-- Habit Item 1 -->
+                    <div class="habit-card p-6 hover:bg-gray-50 transition-all duration-200 flex items-center">
+                        <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-medium">Morning Run</p>
+                            <p class="text-sm text-gray-500">5km • 7:00 AM</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                Streak: 5 days
+                            </span>
+                            <button class="h-8 w-8 rounded-full border-2 border-green-400 flex items-center justify-center hover:bg-green-50">
+                                <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Habit Item 2 -->
+                    <div class="habit-card p-6 hover:bg-gray-50 transition-all duration-200 flex items-center">
+                        <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-4">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-medium">Read a Book</p>
+                            <p class="text-sm text-gray-500">30 minutes • Evening</p>
+                        </div>
+                        <button class="h-8 w-8 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-gray-50">
+                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="px-6 py-4 bg-gray-50 text-right">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                        <svg class="-ml-1 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/></svg>
+                        Add New Habit
+                    </button>
+                </div>
+            </div>
+                <!-- End of Dashboard View -->
+                </div>
+            </main>
+        </div>
+        
+        <script>
+            // Handle tab switching
+            document.addEventListener('DOMContentLoaded', function() {
+                // Show dashboard by default
+                showView('dashboard');
+                
+                // Set up tab click handlers
+                document.querySelectorAll('nav a[href^="#"]').forEach(tab => {
+                    tab.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const view = this.getAttribute('href').substring(1);
+                        showView(view);
+                        
+                        // Update active tab styling
+                        document.querySelectorAll('nav a').forEach(t => t.classList.remove('border-blue-500', 'text-blue-600'));
+                        document.querySelectorAll('nav a').forEach(t => t.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300'));
+                        this.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                        this.classList.add('border-blue-500', 'text-blue-600');
+                    });
+                });
+                
+                // Set up filter button click handlers
+                document.querySelectorAll('[data-filter]').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const filter = this.getAttribute('data-filter');
+                        // Update active filter styling
+                        document.querySelectorAll('[data-filter]').forEach(btn => {
+                            btn.classList.remove('bg-blue-50', 'text-blue-600');
+                            btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+                        });
+                        this.classList.remove('text-gray-600', 'hover:bg-gray-100');
+                        this.classList.add('bg-blue-50', 'text-blue-600');
+                    });
+                });
+            });
+            
+            function showView(view) {
+                // Hide all views
+                document.querySelectorAll('[id$="View"]').forEach(el => el.classList.add('hidden'));
+                
+                // Show selected view
+                const viewElement = document.getElementById(view + 'View');
+                if (viewElement) {
+                    viewElement.classList.remove('hidden');
+                }
+                
+                // Update page title
+                const pageTitle = document.getElementById('pageTitle');
+                const pageSubtitle = document.getElementById('pageSubtitle');
+                
+                switch(view) {
+                    case 'dashboard':
+                        pageTitle.textContent = 'Dashboard';
+                        pageSubtitle.textContent = 'Track your daily habits and tasks';
+                        break;
+                    case 'tasks':
+                        pageTitle.textContent = 'Tasks';
+                        pageSubtitle.textContent = 'Manage your daily tasks';
+                        break;
+                    case 'habits':
+                        pageTitle.textContent = 'Habits';
+                        pageSubtitle.textContent = 'Build and track your habits';
+                        break;
+                    case 'analytics':
+                        pageTitle.textContent = 'Analytics';
+                        pageSubtitle.textContent = 'View your progress and statistics';
+                        break;
+                }
+            }
+        </script>
+</body>
+</html>
