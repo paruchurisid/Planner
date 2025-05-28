@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Gradient Backgrounds</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .gradient-container {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .gradient {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .gradient-name {
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .download-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .download-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div id="gradients">
+        <!-- Gradients will be added here by JavaScript -->
+    </div>
+
+    <script>
+        const gradients = [
+            {
+                name: 'gradient1',
+                colors: ['#FF9A9E', '#FAD0C4']
+            },
+            {
+                name: 'gradient2',
+                colors: ['#A1C4FD', '#C2E9FB']
+            },
+            {
+                name: 'gradient3',
+                colors: ['#84FAB0', '#8FD3F4']
+            },
+            {
+                name: 'gradient4',
+                colors: ['#FFD1FF', '#FAD0C4']
+            },
+            {
+                name: 'gradient5',
+                colors: ['#A6C1EE', '#FBC2EB']
+            },
+            {
+                name: 'gradient6',
+                colors: ['#FFE29F', '#FFA99F']
+            },
+            {
+                name: 'gradient7',
+                colors: ['#E0C3FC', '#8EC5FC']
+            },
+            {
+                name: 'gradient8',
+                colors: ['#F6D365', '#FDA085']
+            }
+        ];
+
+        function createGradientElement(gradient) {
+            const container = document.createElement('div');
+            container.className = 'gradient-container';
+            
+            const gradientEl = document.createElement('div');
+            gradientEl.className = 'gradient';
+            gradientEl.style.background = `linear-gradient(135deg, ${gradient.colors[0]}, ${gradient.colors[1]})`;
+            
+            const nameEl = document.createElement('div');
+            nameEl.className = 'gradient-name';
+            nameEl.textContent = gradient.name;
+            
+            const btn = document.createElement('button');
+            btn.className = 'download-btn';
+            btn.textContent = 'Download';
+            btn.onclick = () => downloadGradient(gradient);
+            
+            gradientEl.appendChild(nameEl);
+            container.appendChild(gradientEl);
+            container.appendChild(btn);
+            
+            return container;
+        }
+        
+        function downloadGradient(gradient) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1200;
+            canvas.height = 800;
+            const ctx = canvas.getContext('2d');
+            
+            const gradientObj = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradientObj.addColorStop(0, gradient.colors[0]);
+            gradientObj.addColorStop(1, gradient.colors[1]);
+            
+            ctx.fillStyle = gradientObj;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const link = document.createElement('a');
+            link.download = `${gradient.name}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+        
+        // Add all gradients to the page
+        const container = document.getElementById('gradients');
+        gradients.forEach(gradient => {
+            container.appendChild(createGradientElement(gradient));
+        });
+    </script>
+</body>
+</html>
