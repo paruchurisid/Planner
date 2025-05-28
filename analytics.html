@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics - Sid Paruchuri</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Analytics - TaskFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -18,7 +20,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="taskflow.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
                     <li><a href="calendar.html"><i class="far fa-calendar"></i> Calendar</a></li>
                     <li><a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
                     <li class="active"><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
@@ -176,7 +178,7 @@
             </div>
         </main>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <script>
         // Task Completion Chart
         const completionCtx = document.getElementById('completionChart').getContext('2d');
@@ -288,5 +290,7 @@
             }
         });
     </script>
+    <!-- App Initialization -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
