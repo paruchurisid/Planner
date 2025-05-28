@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Sid Paruchuri</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <h1>Sid Paruchuri</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="taskflow.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="calendar.html"><i class="far fa-calendar"></i> Calendar</a></li>
+                    <li><a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li class="active"><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Siddhartha+Paruchuri&background=6C63FF&color=fff" alt="Profile">
+                <div class="user-info">
+                    <span class="username">Siddhartha Paruchuri</span>
+                    <span class="user-email">siddhartha@example.com</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h2>Analytics</h2>
+                <div class="time-filter">
+                    <button class="btn btn-outline">Week</button>
+                    <button class="btn btn-outline active">Month</button>
+                    <button class="btn btn-outline">Year</button>
+                </div>
+            </header>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #6C63FF20;">
+                        <i class="fas fa-tasks" style="color: #6C63FF;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>87%</h3>
+                        <p>Completion Rate</p>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i> 12%
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #4ECDC420;">
+                        <i class="fas fa-check-circle" style="color: #4ECDC4;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>42</h3>
+                        <p>Tasks Completed</p>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i> 5
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #FFD16620;">
+                        <i class="fas fa-fire" style="color: #FFD166;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>18</h3>
+                        <p>Day Streak</p>
+                    </div>
+                    <div class="stat-trend down">
+                        <i class="fas fa-arrow-down"></i> 2
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #FF6B6B20;">
+                        <i class="fas fa-clock" style="color: #FF6B6B;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12.5h</h3>
+                        <p>Productive Time</p>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i> 2.3h
+                    </div>
+                </div>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Task Completion</h3>
+                        <select class="chart-filter">
+                            <option>This Month</option>
+                            <option>Last Month</option>
+                            <option>Last 3 Months</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="completionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Task Distribution</h3>
+                    </div>
+                    <div class="chart-container pie-chart">
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Productivity Trend</h3>
+                        <select class="chart-filter">
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                            <option>Yearly</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="productivityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Task Categories</h3>
+                    </div>
+                    <div class="category-list">
+                        <div class="category-item">
+                            <div class="category-color" style="background-color: #6C63FF;"></div>
+                            <span class="category-name">Work</span>
+                            <span class="category-percent">45%</span>
+                            <div class="category-bar">
+                                <div class="category-progress" style="width: 45%; background-color: #6C63FF;"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background-color: #4ECDC4;"></div>
+                            <span class="category-name">Personal</span>
+                            <span class="category-percent">30%</span>
+                            <div class="category-bar">
+                                <div class="category-progress" style="width: 30%; background-color: #4ECDC4;"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background-color: #FFD166;"></div>
+                            <span class="category-name">Health</span>
+                            <span class="category-percent">15%</span>
+                            <div class="category-bar">
+                                <div class="category-progress" style="width: 15%; background-color: #FFD166;"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background-color: #FF6B6B;"></div>
+                            <span class="category-name">Other</span>
+                            <span class="category-percent">10%</span>
+                            <div class="category-bar">
+                                <div class="category-progress" style="width: 10%; background-color: #FF6B6B;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Task Completion Chart
+        const completionCtx = document.getElementById('completionChart').getContext('2d');
+        new Chart(completionCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Completed Tasks',
+                    data: [8, 12, 6, 16],
+                    borderColor: '#6C63FF',
+                    backgroundColor: 'rgba(108, 99, 255, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Task Distribution Chart
+        const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+        new Chart(distributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Work', 'Personal', 'Health', 'Other'],
+                datasets: [{
+                    data: [45, 30, 15, 10],
+                    backgroundColor: ['#6C63FF', '#4ECDC4', '#FFD166', '#FF6B6B'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 10,
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        // Productivity Trend Chart
+        const productivityCtx = document.getElementById('productivityChart').getContext('2d');
+        new Chart(productivityCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Productive Hours',
+                    data: [3.5, 5, 6.5, 4, 7, 2, 1.5],
+                    backgroundColor: '#6C63FF',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + 'h';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

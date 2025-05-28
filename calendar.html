@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Sid Paruchuri</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <h1>Sid Paruchuri</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="taskflow.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li class="active"><a href="calendar.html"><i class="far fa-calendar"></i> Calendar</a></li>
+                    <li><a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Siddhartha+Paruchuri&background=6C63FF&color=fff" alt="Profile">
+                <div class="user-info">
+                    <span class="username">Siddhartha Paruchuri</span>
+                    <span class="user-email">siddhartha@example.com</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h2>Calendar</h2>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Event
+                    </button>
+                </div>
+            </header>
+
+            <div class="calendar-container">
+                <div id="calendar"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Team Meeting',
+                        start: new Date(),
+                        end: new Date(new Date().setHours(new Date().getHours() + 1)),
+                        backgroundColor: '#6C63FF',
+                        borderColor: '#6C63FF'
+                    },
+                    {
+                        title: 'Lunch with Team',
+                        start: new Date(new Date().setDate(new Date().getDate() + 1)),
+                        end: new Date(new Date().setDate(new Date().getDate() + 1)),
+                        backgroundColor: '#4ECDC4',
+                        borderColor: '#4ECDC4'
+                    },
+                    {
+                        title: 'Project Deadline',
+                        start: new Date(new Date().setDate(new Date().getDate() + 5)),
+                        backgroundColor: '#FF6B6B',
+                        borderColor: '#FF6B6B'
+                    }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

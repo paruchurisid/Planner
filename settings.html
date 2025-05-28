@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Sid Paruchuri</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <h1>Sid Paruchuri</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="taskflow.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="calendar.html"><i class="far fa-calendar"></i> Calendar</a></li>
+                    <li><a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Siddhartha+Paruchuri&background=6C63FF&color=fff" alt="Profile">
+                <div class="user-info">
+                    <span class="username">Siddhartha Paruchuri</span>
+                    <span class="user-email">siddhartha@example.com</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content settings-content">
+            <header>
+                <h2>Settings</h2>
+            </header>
+
+            <div class="settings-container">
+                <div class="settings-sidebar">
+                    <button class="settings-nav active" data-tab="profile">
+                        <i class="fas fa-user"></i> Profile
+                    </button>
+                    <button class="settings-nav" data-tab="account">
+                        <i class="fas fa-key"></i> Account
+                    </button>
+                    <button class="settings-nav" data-tab="notifications">
+                        <i class="fas fa-bell"></i> Notifications
+                    </button>
+                    <button class="settings-nav" data-tab="appearance">
+                        <i class="fas fa-paint-brush"></i> Appearance
+                    </button>
+                    <button class="settings-nav" data-tab="integrations">
+                        <i class="fas fa-puzzle-piece"></i> Integrations
+                    </button>
+                    <button class="settings-nav" data-tab="billing">
+                        <i class="fas fa-credit-card"></i> Billing
+                    </button>
+                    <div class="settings-divider"></div>
+                    <button class="settings-nav text-danger" data-tab="delete">
+                        <i class="fas fa-trash-alt"></i> Delete Account
+                    </button>
+                </div>
+
+                <div class="settings-content-area">
+                    <!-- Profile Settings -->
+                    <div id="profile" class="settings-tab active">
+                        <h3>Profile Information</h3>
+                        <p class="settings-description">Update your personal information and how it appears in your profile.</p>
+                        
+                        <form class="settings-form">
+                            <div class="profile-picture-upload">
+                                <div class="profile-picture-preview">
+                                    <img src="https://ui-avatars.com/api/?name=Siddhartha+Paruchuri&background=6C63FF&color=fff" alt="Profile" id="profile-picture">
+                                    <label for="profile-upload" class="upload-overlay">
+                                        <i class="fas fa-camera"></i>
+                                    </label>
+                                    <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+                                </div>
+                                <div class="upload-instructions">
+                                    <p><strong>Upload a new profile picture</strong></p>
+                                    <p class="text-muted">Recommended size: 200x200px, Max size: 5MB</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" value="Siddhartha Paruchuri" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" value="siddhartha@example.com" class="form-control">
+                                <p class="form-help">This is the email you use to log in to your account.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" class="form-control" rows="4" placeholder="Tell us about yourself...">Productivity enthusiast and task management expert.</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" value="San Francisco, CA" class="form-control">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div id="account" class="settings-tab">
+                        <h3>Account Settings</h3>
+                        <p class="settings-description">Manage your account preferences and security settings.</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Change Password</label>
+                                <input type="password" placeholder="Current Password" class="form-control" style="margin-bottom: 1rem;">
+                                <input type="password" placeholder="New Password" class="form-control" style="margin-bottom: 1rem;">
+                                <input type="password" placeholder="Confirm New Password" class="form-control">
+                                <p class="form-help">Use at least 8 characters with a mix of letters, numbers & symbols.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Two-Factor Authentication</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="two-factor" checked>
+                                    <label for="two-factor" class="toggle-label">
+                                        <span class="toggle-handle"></span>
+                                    </label>
+                                    <span class="toggle-text">Enabled</span>
+                                </div>
+                                <p class="form-help">Add an extra layer of security to your account.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Login Notifications</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="login-notifications" checked>
+                                    <label for="login-notifications" class="toggle-label">
+                                        <span class="toggle-handle"></span>
+                                    </label>
+                                    <span class="toggle-text">Receive email notifications for new logins</span>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Notifications Settings -->
+                    <div id="notifications" class="settings-tab">
+                        <h3>Notification Preferences</h3>
+                        <p class="settings-description">Choose how and when you want to be notified.</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Email Notifications</label>
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="email-task-reminders" checked>
+                                        <label for="email-task-reminders" class="toggle-label">
+                                            <span class="toggle-handle"></span>
+                                        </label>
+                                        <span class="toggle-text">Task Reminders</span>
+                                    </div>
+                                    <p class="form-help">Get reminders for upcoming tasks</p>
+                                </div>
+
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="email-productivity" checked>
+                                        <label for="email-productivity" class="toggle-label">
+                                            <span class="toggle-handle"></span>
+                                        </label>
+                                        <span class="toggle-text">Productivity Reports</span>
+                                    </div>
+                                    <p class="form-help">Weekly summary of your productivity</p>
+                                </div>
+
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="email-newsletter" checked>
+                                        <label for="email-newsletter" class="toggle-label">
+                                            <span class="toggle-handle"></span>
+                                        </label>
+                                        <span class="toggle-text">Newsletter</span>
+                                    </div>
+                                    <p class="form-help">Product updates and tips</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Push Notifications</label>
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="push-due-tasks" checked>
+                                        <label for="push-due-tasks" class="toggle-label">
+                                            <span class="toggle-handle"></span>
+                                        </label>
+                                        <span class="toggle-text">Due Task Alerts</span>
+                                    </div>
+                                    <p class="form-help">Get notified when tasks are due</p>
+                                </div>
+
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="push-daily-goals" checked>
+                                        <label for="push-daily-goals" class="toggle-label">
+                                            <span class="toggle-handle"></span>
+                                        </label>
+                                        <span class="toggle-text">Daily Goal Reminders</span>
+                                    </div>
+                                    <p class="form-help">Reminders to help you stay on track</p>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Appearance Settings -->
+                    <div id="appearance" class="settings-tab">
+                        <h3>Appearance</h3>
+                        <p class="settings-description">Customize how TaskFlow looks and feels.</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Theme</label>
+                                <div class="theme-options">
+                                    <div class="theme-option">
+                                        <input type="radio" id="theme-light" name="theme" checked>
+                                        <label for="theme-light" class="theme-label">
+                                            <div class="theme-preview light-theme"></div>
+                                            <span>Light</span>
+                                        </label>
+                                    </div>
+                                    <div class="theme-option">
+                                        <input type="radio" id="theme-dark" name="theme">
+                                        <label for="theme-dark" class="theme-label">
+                                            <div class="theme-preview dark-theme"></div>
+                                            <span>Dark</span>
+                                        </label>
+                                    </div>
+                                    <div class="theme-option">
+                                        <input type="radio" id="theme-system" name="theme">
+                                        <label for="theme-system" class="theme-label">
+                                            <div class="theme-preview system-theme">
+                                                <div class="half-light"></div>
+                                                <div class="half-dark"></div>
+                                            </div>
+                                            <span>System</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Accent Color</label>
+                                <div class="color-options">
+                                    <input type="radio" id="color-purple" name="accent-color" checked>
+                                    <label for="color-purple" class="color-option" style="background-color: #6C63FF;"></label>
+                                    
+                                    <input type="radio" id="color-blue" name="accent-color">
+                                    <label for="color-blue" class="color-option" style="background-color: #3B82F6;"></label>
+                                    
+                                    <input type="radio" id="color-green" name="accent-color">
+                                    <label for="color-green" class="color-option" style="background-color: #10B981;"></label>
+                                    
+                                    <input type="radio" id="color-red" name="accent-color">
+                                    <label for="color-red" class="color-option" style="background-color: #EF4444;"></label>
+                                    
+                                    <input type="radio" id="color-yellow" name="accent-color">
+                                    <label for="color-yellow" class="color-option" style="background-color: #F59E0B;"></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Density</label>
+                                <div class="density-options">
+                                    <div class="density-option">
+                                        <input type="radio" id="density-comfortable" name="density" checked>
+                                        <label for="density-comfortable">Comfortable</label>
+                                    </div>
+                                    <div class="density-option">
+                                        <input type="radio" id="density-cozy" name="density">
+                                        <label for="density-cozy">Cozy</label>
+                                    </div>
+                                    <div class="density-option">
+                                        <input type="radio" id="density-compact" name="density">
+                                        <label for="density-compact">Compact</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Reset to Defaults</button>
+                                <button type="submit" class="btn btn-primary">Apply Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Integrations Settings -->
+                    <div id="integrations" class="settings-tab">
+                        <h3>Integrations</h3>
+                        <p class="settings-description">Connect TaskFlow with your favorite apps and services.</p>
+                        
+                        <div class="integrations-grid">
+                            <div class="integration-card">
+                                <div class="integration-logo">
+                                    <i class="fab fa-google" style="color: #DB4437;"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Google Calendar</h4>
+                                    <p>Sync your tasks with Google Calendar</p>
+                                </div>
+                                <div class="integration-actions">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="google-calendar" checked>
+                                        <label for="google-calendar" class="toggle-label">
+                                            <span class="toggle-handle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="integration-card">
+                                <div class="integration-logo">
+                                    <i class="fab fa-microsoft" style="color: #00A4EF;"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Microsoft Outlook</h4>
+                                    <p>Connect with your Outlook calendar</p>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn btn-outline">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="integration-card">
+                                <div class="integration-logo">
+                                    <i class="fab fa-slack" style="color: #4A154B;"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Slack</h4>
+                                    <p>Get task notifications in Slack</p>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn btn-outline">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="integration-card">
+                                <div class="integration-logo">
+                                    <i class="fab fa-dropbox" style="color: #0061FF;"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Dropbox</h4>
+                                    <p>Attach files from Dropbox to tasks</p>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn btn-outline">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="integration-card">
+                                <div class="integration-logo">
+                                    <i class="fab fa-github" style="color: #181717;"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>GitHub</h4>
+                                    <p>Link GitHub issues to tasks</p>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn btn-outline">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="integration-card">
+                                <div class="integration-logo">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Add Integration</h4>
+                                    <p>Connect another service</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Settings -->
+                    <div id="billing" class="settings-tab">
+                        <h3>Billing & Subscription</h3>
+                        <p class="settings-description">Manage your subscription and payment methods.</p>
+                        
+                        <div class="billing-card">
+                            <div class="billing-header">
+                                <div>
+                                    <h4>Pro Plan</h4>
+                                    <p class="text-muted">Billed annually at $99.99/year</p>
+                                </div>
+                                <button class="btn btn-outline">Change Plan</button>
+                            </div>
+                            
+                            <div class="billing-details">
+                                <div class="billing-detail">
+                                    <span class="detail-label">Next Billing Date</span>
+                                    <span class="detail-value">May 28, 2024</span>
+                                </div>
+                                <div class="billing-detail">
+                                    <span class="detail-label">Payment Method</span>
+                                    <div class="payment-method">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <span>Visa ending in 4242</span>
+                                        <button class="btn-text">Edit</button>
+                                    </div>
+                                </div>
+                                <div class="billing-detail">
+                                    <span class="detail-label">Billing History</span>
+                                    <button class="btn-text">View Invoices</button>
+                                </div>
+                            </div>
+                            
+                            <div class="billing-actions">
+                                <button class="btn btn-text text-danger">Cancel Subscription</button>
+                            </div>
+                        </div>
+                        
+                        <h4 style="margin-top: 2rem;">Usage</h4>
+                        <div class="usage-grid">
+                            <div class="usage-card">
+                                <div class="usage-info">
+                                    <span class="usage-label">Tasks</span>
+                                    <span class="usage-value">128/Unlimited</span>
+                                </div>
+                                <div class="usage-bar">
+                                    <div class="usage-progress" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="usage-card">
+                                <div class="usage-info">
+                                    <span class="usage-label">Storage</span>
+                                    <span class="usage-value">2.5GB/10GB</span>
+                                </div>
+                                <div class="usage-bar">
+                                    <div class="usage-progress" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="usage-card">
+                                <div class="usage-info">
+                                    <span class="usage-label">Team Members</span>
+                                    <span class="usage-value">3/5</span>
+                                </div>
+                                <div class="usage-bar">
+                                    <div class="usage-progress" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Account -->
+                    <div id="delete" class="settings-tab">
+                        <div class="delete-account-card">
+                            <div class="delete-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Delete Your Account</h3>
+                            <p class="delete-warning">This action cannot be undone. All your data will be permanently deleted.</p>
+                            
+                            <div class="form-group">
+                                <label for="confirm-email">To confirm, type your email address</label>
+                                <input type="email" id="confirm-email" class="form-control" placeholder="siddhartha@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="confirm-delete">
+                                    I understand that this action is irreversible and all my data will be permanently deleted.
+                                </label>
+                            </div>
+                            
+                            <button class="btn btn-danger" disabled id="delete-account-btn">
+                                <i class="fas fa-trash-alt"></i> Delete My Account Permanently
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.settings-nav').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and tabs
+                document.querySelectorAll('.settings-nav').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.settings-tab').forEach(tab => tab.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding tab
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Enable/disable delete account button based on confirmation
+        const confirmEmail = document.getElementById('confirm-email');
+        const confirmCheckbox = document.getElementById('confirm-delete');
+        const deleteButton = document.getElementById('delete-account-btn');
+        
+        function updateDeleteButton() {
+            const emailMatch = confirmEmail.value === 'siddhartha@example.com';
+            deleteButton.disabled = !(emailMatch && confirmCheckbox.checked);
+        }
+        
+        confirmEmail.addEventListener('input', updateDeleteButton);
+        confirmCheckbox.addEventListener('change', updateDeleteButton);
+        
+        // Profile picture upload preview
+        const profileUpload = document.getElementById('profile-upload');
+        const profilePicture = document.getElementById('profile-picture');
+        
+        profileUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    profilePicture.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Toggle switch functionality
+        document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if (this.checked) {
+                    label.classList.add('checked');
+                } else {
+                    label.classList.remove('checked');
+                }
+            });
+            
+            // Initialize toggle switches
+            if (checkbox.checked) {
+                checkbox.nextElementSibling.classList.add('checked');
+            }
+        });
+    </script>
+</body>
+</html>

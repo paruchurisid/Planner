@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <h1>Sid Paruchuri</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="calendar.html"><i class="far fa-calendar"></i> Calendar</a></li>
+                    <li><a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Siddhartha+Paruchuri&background=6C63FF&color=fff" alt="Profile">
+                <div class="user-info">
+                    <span class="username">Siddhartha Paruchuri</span>
+                    <span class="user-email">siddhartha@example.com</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h2>Good morning, Siddhartha</h2>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+            </header>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #FF6B6B20;">
+                        <i class="fas fa-tasks" style="color: #FF6B6B;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Total Tasks</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #4ECDC420;">
+                        <i class="fas fa-check-circle" style="color: #4ECDC4;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Completed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #FFD16620;">
+                        <i class="fas fa-clock" style="color: #FFD166;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>In Progress</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #6C63FF20;">
+                        <i class="fas fa-fire" style="color: #6C63FF;"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Streak</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-container">
+                <div class="section-header">
+                    <h3>Today's Tasks</h3>
+                    <span class="view-all">View All</span>
+                </div>
+                
+                <div class="task-list">
+                    <div class="task-item">
+                        <label class="checkbox-container">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <div class="task-details">
+                            <h4>Morning Workout</h4>
+                            <p>30 minutes of cardio</p>
+                            <div class="task-tags">
+                                <span class="tag" style="background-color: #FF6B6B20; color: #FF6B6B;">Health</span>
+                                <span class="tag" style="background-color: #4ECDC420; color: #4ECDC4;">Morning</span>
+                            </div>
+                        </div>
+                        <div class="task-time">
+                            <span>08:00 AM</span>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                        <div class="task-details">
+                            <h4 class="completed">Team Meeting</h4>
+                            <p>Weekly sync with design team</p>
+                            <div class="task-tags">
+                                <span class="tag" style="background-color: #6C63FF20; color: #6C63FF;">Work</span>
+                            </div>
+                        </div>
+                        <div class="task-time">
+                            <span>10:00 AM</span>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <label class="checkbox-container">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <div class="task-details">
+                            <h4>Lunch Break</h4>
+                            <p>Try the new salad place</p>
+                            <div class="task-tags">
+                                <span class="tag" style="background-color: #FFD16620; color: #FFD166;">Food</span>
+                            </div>
+                        </div>
+                        <div class="task-time">
+                            <span>12:30 PM</span>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- App Initialization -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
